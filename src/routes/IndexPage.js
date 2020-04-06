@@ -1,21 +1,27 @@
-import React from 'react';
-import { connect } from 'dva';
-import styles from './IndexPage.css';
-
-function IndexPage() {
-  return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
-      </ul>
-    </div>
-  );
+import React, { Component } from "react";
+import { connect } from "dva";
+class IndexPage extends Component {
+  handleSetName = () => {
+    this.props.dispatch({
+      type: "indexTest/setName",
+      name: "猪猪侠",
+    });
+  };
+  render() {
+    return (
+      <div>
+        我是首页
+        {this.props.msg}
+        <div>{this.props.name}</div>
+        <button onClick={this.handleSetName}>setName</button>
+      </div>
+    );
+  }
 }
-
-IndexPage.propTypes = {
+const mapState = (state) => {
+  return {
+    msg: "我爱北京天安门",
+    name: state.indexTest.name,
+  };
 };
-
-export default connect()(IndexPage);
+export default connect(mapState)(IndexPage);
