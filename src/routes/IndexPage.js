@@ -7,6 +7,13 @@ class IndexPage extends Component {
       name: "猪猪侠",
     });
   };
+  handleSetNameAsync=()=>{
+    console.log('in')
+    this.props.dispatch({
+      type: "indexTest/setNameAsync",
+      name: "猪猪侠",
+    });
+  }
   render() {
     return (
       <div>
@@ -14,6 +21,7 @@ class IndexPage extends Component {
         {this.props.msg}
         <div>{this.props.name}</div>
         <button onClick={this.handleSetName}>setName</button>
+        <button onClick={this.handleSetNameAsync}>setNameAsync</button>
       </div>
     );
   }

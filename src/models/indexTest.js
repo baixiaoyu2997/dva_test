@@ -11,4 +11,13 @@ export default {
       };
     },
   },
+  effects:{
+    *setNameAsync({payLoad},{put,call}){
+        yield console.log('run')
+        yield put({
+            type:"setName",
+            name:"超人"
+        })
+    }
+}
 };
