@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "dva";
-// import * as apis from "../services/example"
+import * as apis from "../services/example"
 class IndexPage extends Component {
   handleSetName = () => {
     this.props.dispatch({
@@ -19,6 +19,9 @@ class IndexPage extends Component {
     // apis.testCNode().then(res=>{
     //   console.log(res )
     // })
+    apis.mockdata().then(res=>{
+      console.log(res)
+    })
   }
   testCnode = () => {
     this.props.dispatch({
